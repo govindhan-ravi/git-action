@@ -1,0 +1,10 @@
+{
+  "name": "docker-github-actions-mini-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"govindhan arun Test successful\""
+  },
+  "dependencies": {}
+}
