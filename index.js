@@ -1,1 +1,11 @@
-console.log("Hello from Docker + GitHub Actions Mini Project!");
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello from GitHub Actions + Docker!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
