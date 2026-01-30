@@ -16,13 +16,24 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: govindhan1234
+          username: govindhan1234 
           password: dckr_pat_PsCQzb2Xx2F7LpqTssEmaXVrG44
 
       - name: Build Docker image
         run: |
-          docker build -t govindhan1234/github-actions-mini:latest . 
+          docker build -t govindhan1234/github-actions-mini:latest .
 
       - name: Push Docker image
         run: |
           docker push govindhan1234/github-actions-mini:latest
+
+      - name: Pull Docker image (test)
+        run: |
+          docker pull govindhan1234/github-actions-mini:latest
+
+      - name: Run Docker container (test)
+        run: |
+          docker run -d -p 3000:3000 --name test-container govindhan1234/github-actions-mini:latest
+          sleep 10
+          docker ps
+          docker logs test-container
