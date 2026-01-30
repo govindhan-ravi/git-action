@@ -1,17 +1,11 @@
-name: Docker CI Pipeline
+FROM node:18-alpine
 
-on:
-  push:
-    branches:
-      - main
+WORKDIR /app
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+COPY package.json .
 
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
+RUN npm install
 
-      - name: Build Docker Image
-        run: docker build -t mini-project .
+COPY index.js .
+
+CMD ["npm", "start"]
