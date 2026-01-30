@@ -1,11 +1,20 @@
+# Use official Node.js image
 FROM node:18-alpine
 
+# Set working directory
 WORKDIR /app
 
-COPY package.json .
+# Copy package files first (for caching)
+COPY package*.json ./
 
-RUN npm install
+# Install dependencies
+RUN npm install --production
 
-COPY index.js .
+# Copy rest of the app
+COPY . .
 
-CMD ["npm", "start"]
+# Expose port
+EXPOSE 3000
+
+# Start the app
+CMD ["node", "index.js"]
